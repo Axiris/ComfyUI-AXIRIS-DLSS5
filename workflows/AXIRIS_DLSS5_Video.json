@@ -1,0 +1,808 @@
+{
+ "id": "23ea978b-0480-4b32-8a10-70de553a3ffa",
+ "revision": 0,
+ "last_node_id": 8,
+ "last_link_id": 10,
+ "nodes": [
+  {
+   "id": 1,
+   "type": "Note",
+   "pos": [
+    40,
+    40
+   ],
+   "size": [
+    560,
+    220
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "widgets_values": [
+    "AXIRIS DLSS 5 — video finishing of a shot\n\nLoad Video → DLSS 5 Video finishing (Merserk v9 video pipeline: temporal, scene cuts, shimmer suppression, motion computed by the engine) → Save Video + Before/After slider.\nDefaults = the AXIRIS look. Measured on cinematic shots: no added shimmer, brightness kept.\nThe shot goes through RAM as frames: fine for shots, not for minutes-long films."
+   ],
+   "widgets_values_named": {
+    "text": "AXIRIS DLSS 5 — video finishing of a shot\n\nLoad Video → DLSS 5 Video finishing (Merserk v9 video pipeline: temporal, scene cuts, shimmer suppression, motion computed by the engine) → Save Video + Before/After slider.\nDefaults = the AXIRIS look. Measured on cinematic shots: no added shimmer, brightness kept.\nThe shot goes through RAM as frames: fine for shots, not for minutes-long films."
+   },
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 2,
+   "type": "LoadVideo",
+   "pos": [
+    40,
+    300
+   ],
+   "size": [
+    340,
+    420
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "fichier",
+     "name": "file",
+     "type": "COMBO",
+     "widget": {
+      "name": "file"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "choisir un fichier à télécharger",
+     "name": "upload",
+     "type": "IMAGEUPLOAD",
+     "widget": {
+      "name": "upload"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "Vidéo",
+     "name": "VIDEO",
+     "type": "VIDEO",
+     "links": [
+      1
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.34.2",
+    "Node name for S&R": "LoadVideo"
+   },
+   "widgets_values": [
+    "axiris_dlss5_shot.mp4",
+    "image"
+   ],
+   "widgets_values_named": {
+    "file": "axiris_dlss5_shot.mp4",
+    "upload": "image"
+   }
+  },
+  {
+   "id": 3,
+   "type": "GetVideoComponents",
+   "pos": [
+    420,
+    300
+   ],
+   "size": [
+    260,
+    140
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "vidéo",
+     "name": "video",
+     "type": "VIDEO",
+     "link": 1
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "links": [
+      2,
+      8
+     ]
+    },
+    {
+     "localized_name": "audio",
+     "name": "audio",
+     "type": "AUDIO",
+     "links": [
+      6
+     ]
+    },
+    {
+     "localized_name": "ips",
+     "name": "fps",
+     "type": "FLOAT",
+     "links": [
+      3,
+      5
+     ]
+    },
+    {
+     "localized_name": "bit_depth",
+     "name": "bit_depth",
+     "type": "COMBO",
+     "links": null
+    },
+    {
+     "localized_name": "color_space",
+     "name": "color_space",
+     "type": "COMBO",
+     "links": null
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.34.2",
+    "Node name for S&R": "GetVideoComponents"
+   }
+  },
+  {
+   "id": 4,
+   "type": "AXDLSS5VideoFinish",
+   "pos": [
+    720,
+    300
+   ],
+   "size": [
+    380,
+    470
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "link": 2
+    },
+    {
+     "localized_name": "mask",
+     "name": "mask",
+     "shape": 7,
+     "type": "MASK",
+     "link": null
+    },
+    {
+     "localized_name": "fps",
+     "name": "fps",
+     "type": "FLOAT",
+     "widget": {
+      "name": "fps"
+     },
+     "link": 3
+    },
+    {
+     "localized_name": "intensity",
+     "name": "intensity",
+     "type": "FLOAT",
+     "widget": {
+      "name": "intensity"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "local_tone",
+     "name": "local_tone",
+     "type": "FLOAT",
+     "widget": {
+      "name": "local_tone"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "local_structure",
+     "name": "local_structure",
+     "type": "FLOAT",
+     "widget": {
+      "name": "local_structure"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "skin_structure",
+     "name": "skin_structure",
+     "type": "FLOAT",
+     "widget": {
+      "name": "skin_structure"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "auto_mask",
+     "name": "auto_mask",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "auto_mask"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "color_strength",
+     "name": "color_strength",
+     "type": "FLOAT",
+     "widget": {
+      "name": "color_strength"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "tone_preservation",
+     "name": "tone_preservation",
+     "type": "FLOAT",
+     "widget": {
+      "name": "tone_preservation"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "shimmer_suppression",
+     "name": "shimmer_suppression",
+     "type": "FLOAT",
+     "widget": {
+      "name": "shimmer_suppression"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "passes",
+     "name": "passes",
+     "type": "INT",
+     "widget": {
+      "name": "passes"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "style",
+     "name": "style",
+     "type": "COMBO",
+     "widget": {
+      "name": "style"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "mask_feather",
+     "name": "mask_feather",
+     "shape": 7,
+     "type": "INT",
+     "widget": {
+      "name": "mask_feather"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "face_protection",
+     "name": "face_protection",
+     "shape": 7,
+     "type": "FLOAT",
+     "widget": {
+      "name": "face_protection"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "grain",
+     "name": "grain",
+     "shape": 7,
+     "type": "FLOAT",
+     "widget": {
+      "name": "grain"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "links": [
+      4,
+      9
+     ]
+    },
+    {
+     "localized_name": "report",
+     "name": "report",
+     "type": "STRING",
+     "links": [
+      10
+     ]
+    }
+   ],
+   "properties": {
+    "aux_id": "ComfyUI-AXIRIS-DLSS5",
+    "ver": "e35fcbe15b06574db6c024b13565513fc9723082",
+    "Node name for S&R": "AXDLSS5VideoFinish"
+   },
+   "widgets_values": [
+    24,
+    0.85,
+    0.595,
+    1,
+    -1,
+    true,
+    1,
+    0,
+    0.7,
+    1,
+    "Default",
+    8,
+    0,
+    0
+   ],
+   "widgets_values_named": {
+    "fps": 24,
+    "intensity": 0.85,
+    "local_tone": 0.595,
+    "local_structure": 1,
+    "skin_structure": -1,
+    "auto_mask": true,
+    "color_strength": 1,
+    "tone_preservation": 0,
+    "shimmer_suppression": 0.7,
+    "passes": 1,
+    "style": "Default",
+    "mask_feather": 8,
+    "face_protection": 0,
+    "grain": 0
+   }
+  },
+  {
+   "id": 5,
+   "type": "CreateVideo",
+   "pos": [
+    1140,
+    300
+   ],
+   "size": [
+    300,
+    160
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "link": 4
+    },
+    {
+     "localized_name": "audio",
+     "name": "audio",
+     "shape": 7,
+     "type": "AUDIO",
+     "link": 6
+    },
+    {
+     "localized_name": "fps",
+     "name": "fps",
+     "type": "FLOAT",
+     "widget": {
+      "name": "fps"
+     },
+     "link": 5
+    },
+    {
+     "localized_name": "bit_depth",
+     "name": "bit_depth",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "bit_depth"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "color_space",
+     "name": "color_space",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "color_space"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "Vidéo",
+     "name": "VIDEO",
+     "type": "VIDEO",
+     "links": [
+      7
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.34.2",
+    "Node name for S&R": "CreateVideo"
+   },
+   "widgets_values": [
+    24,
+    "auto",
+    "sRGB"
+   ],
+   "widgets_values_named": {
+    "fps": 24,
+    "bit_depth": "auto",
+    "color_space": "sRGB"
+   }
+  },
+  {
+   "id": 6,
+   "type": "SaveVideo",
+   "pos": [
+    1140,
+    500
+   ],
+   "size": [
+    380,
+    357.921875
+   ],
+   "flags": {},
+   "order": 7,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "vidéo",
+     "name": "video",
+     "type": "VIDEO",
+     "link": 7
+    },
+    {
+     "localized_name": "préfixe_nom_fichier",
+     "name": "filename_prefix",
+     "type": "STRING",
+     "widget": {
+      "name": "filename_prefix"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "format",
+     "name": "format",
+     "type": "COMFY_DYNAMICCOMBO_V3",
+     "widget": {
+      "name": "format"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "format.codec",
+     "name": "format.codec",
+     "type": "COMFY_DYNAMICCOMBO_V3",
+     "widget": {
+      "name": "format.codec"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "codec",
+     "name": "codec",
+     "shape": 7,
+     "type": "COMFY_DYNAMICCOMBO_V3",
+     "widget": {
+      "name": "codec"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "vidéo",
+     "name": "video",
+     "type": "VIDEO",
+     "links": null
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.34.2",
+    "Node name for S&R": "SaveVideo"
+   },
+   "widgets_values": [
+    "AXIRIS_DLSS5/video",
+    "auto",
+    "auto",
+    "auto"
+   ],
+   "widgets_values_named": {
+    "filename_prefix": "AXIRIS_DLSS5/video",
+    "format": "auto",
+    "format.codec": "auto",
+    "codec": "auto"
+   }
+  },
+  {
+   "id": 7,
+   "type": "AXBeforeAfter",
+   "pos": [
+    720,
+    820
+   ],
+   "size": [
+    760,
+    540
+   ],
+   "flags": {},
+   "order": 5,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "before",
+     "name": "before",
+     "type": "IMAGE",
+     "link": 8
+    },
+    {
+     "localized_name": "after",
+     "name": "after",
+     "type": "IMAGE",
+     "link": 9
+    },
+    {
+     "localized_name": "fps",
+     "name": "fps",
+     "shape": 7,
+     "type": "FLOAT",
+     "widget": {
+      "name": "fps"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "label_before",
+     "name": "label_before",
+     "shape": 7,
+     "type": "STRING",
+     "widget": {
+      "name": "label_before"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "label_after",
+     "name": "label_after",
+     "shape": 7,
+     "type": "STRING",
+     "widget": {
+      "name": "label_after"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "direction",
+     "name": "direction",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "direction"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "format",
+     "name": "format",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "format"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "jpeg_quality",
+     "name": "jpeg_quality",
+     "shape": 7,
+     "type": "INT",
+     "widget": {
+      "name": "jpeg_quality"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "max_frames",
+     "name": "max_frames",
+     "shape": 7,
+     "type": "INT",
+     "widget": {
+      "name": "max_frames"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "report",
+     "name": "report",
+     "type": "STRING",
+     "links": null
+    }
+   ],
+   "properties": {
+    "aux_id": "ComfyUI-AXIRIS-DLSS5",
+    "ver": "e35fcbe15b06574db6c024b13565513fc9723082",
+    "Node name for S&R": "AXBeforeAfter"
+   },
+   "widgets_values": [
+    24,
+    "SOURCE",
+    "DLSS 5",
+    "vertical",
+    "jpeg",
+    92,
+    600,
+    ""
+   ],
+   "widgets_values_named": {
+    "fps": 24,
+    "label_before": "SOURCE",
+    "label_after": "DLSS 5",
+    "direction": "vertical",
+    "format": "jpeg",
+    "jpeg_quality": 92,
+    "max_frames": 600,
+    "axba_view": ""
+   }
+  },
+  {
+   "id": 8,
+   "type": "PreviewAny",
+   "pos": [
+    420,
+    500
+   ],
+   "size": [
+    260,
+    200
+   ],
+   "flags": {},
+   "order": 6,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "source",
+     "name": "source",
+     "type": "*",
+     "link": 10
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "CHAÎNE",
+     "name": "STRING",
+     "type": "STRING",
+     "links": null
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.34.2",
+    "Node name for S&R": "PreviewAny"
+   },
+   "widgets_values": [],
+   "widgets_values_named": {}
+  }
+ ],
+ "links": [
+  [
+   1,
+   2,
+   0,
+   3,
+   0,
+   "VIDEO"
+  ],
+  [
+   2,
+   3,
+   0,
+   4,
+   0,
+   "IMAGE"
+  ],
+  [
+   3,
+   3,
+   2,
+   4,
+   2,
+   "FLOAT"
+  ],
+  [
+   4,
+   4,
+   0,
+   5,
+   0,
+   "IMAGE"
+  ],
+  [
+   5,
+   3,
+   2,
+   5,
+   2,
+   "FLOAT"
+  ],
+  [
+   6,
+   3,
+   1,
+   5,
+   1,
+   "AUDIO"
+  ],
+  [
+   7,
+   5,
+   0,
+   6,
+   0,
+   "VIDEO"
+  ],
+  [
+   8,
+   3,
+   0,
+   7,
+   0,
+   "IMAGE"
+  ],
+  [
+   9,
+   4,
+   0,
+   7,
+   1,
+   "IMAGE"
+  ],
+  [
+   10,
+   4,
+   1,
+   8,
+   0,
+   "STRING"
+  ]
+ ],
+ "groups": [],
+ "config": {},
+ "extra": {
+  "ds": {
+   "scale": 0.38770011737552745,
+   "offset": [
+    1243.3988485209447,
+    338.33333333333326
+   ]
+  }
+ },
+ "version": 0.4
+}

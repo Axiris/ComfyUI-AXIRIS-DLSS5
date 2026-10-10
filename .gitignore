@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+# the engine is installed by the user from its source, never committed here
+merserk/
+# local path to the engine
+config.json
+
+# Sauvegardes de travail — jamais dans le depot public
+*.bak-*
+workflows/_sauvegardes/
+docs/

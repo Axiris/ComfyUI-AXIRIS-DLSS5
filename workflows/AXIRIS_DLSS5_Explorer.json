@@ -1,0 +1,551 @@
+{
+ "id": "00000000-0000-0000-0000-000000000000",
+ "revision": 0,
+ "last_node_id": 7,
+ "last_link_id": 6,
+ "nodes": [
+  {
+   "id": 1,
+   "type": "Note",
+   "pos": [
+    40,
+    40
+   ],
+   "size": [
+    560,
+    240
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {},
+   "widgets_values": [
+    "AXIRIS DLSS 5 — Explorer: every variant at once\n\n1. Put your image in Load Image, run.\n2. « board »: the source then each variant, at 100 % on the zone (zone_x / zone_y in %), its settings written under it.\n3. Click a tile of the board, or an image in Save Image: the Before/After slider shows that variant.\nOne variant per line: a preset name, or « my test: passes=1 intensity=0.85 local_tone=1.5 »."
+   ],
+   "widgets_values_named": {
+    "text": "AXIRIS DLSS 5 — Explorer: every variant at once\n\n1. Put your image in Load Image, run.\n2. « board »: the source then each variant, at 100 % on the zone (zone_x / zone_y in %), its settings written under it.\n3. Click a tile of the board, or an image in Save Image: the Before/After slider shows that variant.\nOne variant per line: a preset name, or « my test: passes=1 intensity=0.85 local_tone=1.5 »."
+   },
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 2,
+   "type": "LoadImage",
+   "pos": [
+    40,
+    320
+   ],
+   "size": [
+    320,
+    330
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "image",
+     "name": "image",
+     "type": "COMBO",
+     "widget": {
+      "name": "image"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "choisissez le fichier à télécharger",
+     "name": "upload",
+     "type": "IMAGEUPLOAD",
+     "widget": {
+      "name": "upload"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "IMAGE",
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "links": [
+      1,
+      5
+     ]
+    },
+    {
+     "localized_name": "MASQUE",
+     "name": "MASK",
+     "type": "MASK",
+     "links": null
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.34.2",
+    "Node name for S&R": "LoadImage"
+   },
+   "widgets_values": [
+    "axiris_dlss5_portrait.png",
+    "image"
+   ],
+   "widgets_values_named": {
+    "image": "axiris_dlss5_portrait.png",
+    "upload": "image"
+   }
+  },
+  {
+   "id": 3,
+   "type": "AXDLSS5Explorer",
+   "pos": [
+    400,
+    320
+   ],
+   "size": [
+    460,
+    460
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "image",
+     "name": "image",
+     "type": "IMAGE",
+     "link": 1
+    },
+    {
+     "localized_name": "mask",
+     "name": "mask",
+     "shape": 7,
+     "type": "MASK",
+     "link": null
+    },
+    {
+     "localized_name": "variants",
+     "name": "variants",
+     "type": "STRING",
+     "widget": {
+      "name": "variants"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "zone_x",
+     "name": "zone_x",
+     "type": "INT",
+     "widget": {
+      "name": "zone_x"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "zone_y",
+     "name": "zone_y",
+     "type": "INT",
+     "widget": {
+      "name": "zone_y"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "zone_size",
+     "name": "zone_size",
+     "type": "INT",
+     "widget": {
+      "name": "zone_size"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "columns",
+     "name": "columns",
+     "type": "INT",
+     "widget": {
+      "name": "columns"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "mask_feather",
+     "name": "mask_feather",
+     "shape": 7,
+     "type": "INT",
+     "widget": {
+      "name": "mask_feather"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "board",
+     "name": "board",
+     "type": "IMAGE",
+     "links": [
+      2
+     ]
+    },
+    {
+     "localized_name": "variants",
+     "name": "variants",
+     "type": "IMAGE",
+     "links": [
+      3,
+      6
+     ]
+    },
+    {
+     "localized_name": "report",
+     "name": "report",
+     "type": "STRING",
+     "links": [
+      4
+     ]
+    }
+   ],
+   "properties": {
+    "aux_id": "ComfyUI-AXIRIS-DLSS5",
+    "ver": "e35fcbe15b06574db6c024b13565513fc9723082",
+    "Node name for S&R": "AXDLSS5Explorer"
+   },
+   "widgets_values": [
+    "AXIRIS look: passes=1 tone_preservation=0.0 color_strength=1.0 intensity=0.85 local_tone=0.595 auto_mask=True\nAXIRIS look, deeper volumes: passes=1 tone_preservation=0.0 color_strength=1.0 intensity=0.85 local_tone=1.5 auto_mask=True\nSoft single pass: passes=1 tone_preservation=0.5 color_strength=0.5\nFaithful: passes=2 tone_preservation=1.0 color_strength=0.0\nStrong material: passes=4 tone_preservation=1.0 color_strength=0.0\nMaterial + color: passes=3 tone_preservation=1.0 color_strength=0.5\nGame-like light: passes=3 tone_preservation=0.4 color_strength=1.0\nCinematic: passes=2 tone_preservation=0.7 color_strength=0.7 style=Cinematic\nPure detail: passes=2 tone_preservation=1.0 color_strength=0.0 local_tone=0.5 local_structure=1.8\nWorked skin: passes=3 tone_preservation=0.9 color_strength=0.3 skin_structure=1.5 auto_mask=True\nRaw: passes=3 tone_preservation=0.0 color_strength=1.0",
+    50,
+    40,
+    512,
+    4,
+    8
+   ],
+   "widgets_values_named": {
+    "variants": "AXIRIS look: passes=1 tone_preservation=0.0 color_strength=1.0 intensity=0.85 local_tone=0.595 auto_mask=True\nAXIRIS look, deeper volumes: passes=1 tone_preservation=0.0 color_strength=1.0 intensity=0.85 local_tone=1.5 auto_mask=True\nSoft single pass: passes=1 tone_preservation=0.5 color_strength=0.5\nFaithful: passes=2 tone_preservation=1.0 color_strength=0.0\nStrong material: passes=4 tone_preservation=1.0 color_strength=0.0\nMaterial + color: passes=3 tone_preservation=1.0 color_strength=0.5\nGame-like light: passes=3 tone_preservation=0.4 color_strength=1.0\nCinematic: passes=2 tone_preservation=0.7 color_strength=0.7 style=Cinematic\nPure detail: passes=2 tone_preservation=1.0 color_strength=0.0 local_tone=0.5 local_structure=1.8\nWorked skin: passes=3 tone_preservation=0.9 color_strength=0.3 skin_structure=1.5 auto_mask=True\nRaw: passes=3 tone_preservation=0.0 color_strength=1.0",
+    "zone_x": 50,
+    "zone_y": 40,
+    "zone_size": 512,
+    "columns": 4,
+    "mask_feather": 8
+   }
+  },
+  {
+   "id": 4,
+   "type": "PreviewImage",
+   "pos": [
+    900,
+    320
+   ],
+   "size": [
+    900,
+    900
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "link": 2
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "links": null
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.34.2",
+    "Node name for S&R": "PreviewImage"
+   }
+  },
+  {
+   "id": 5,
+   "type": "SaveImage",
+   "pos": [
+    400,
+    820
+   ],
+   "size": [
+    460,
+    380
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "link": 3
+    },
+    {
+     "localized_name": "préfixe_du_nom_de_fichier",
+     "name": "filename_prefix",
+     "type": "STRING",
+     "widget": {
+      "name": "filename_prefix"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "links": null
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.34.2",
+    "Node name for S&R": "SaveImage"
+   },
+   "widgets_values": [
+    "AXIRIS_DLSS5/explorer"
+   ],
+   "widgets_values_named": {
+    "filename_prefix": "AXIRIS_DLSS5/explorer"
+   }
+  },
+  {
+   "id": 6,
+   "type": "AXBeforeAfter",
+   "pos": [
+    900,
+    1260
+   ],
+   "size": [
+    760,
+    560
+   ],
+   "flags": {},
+   "order": 5,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "before",
+     "name": "before",
+     "type": "IMAGE",
+     "link": 5
+    },
+    {
+     "localized_name": "after",
+     "name": "after",
+     "type": "IMAGE",
+     "link": 6
+    },
+    {
+     "localized_name": "fps",
+     "name": "fps",
+     "shape": 7,
+     "type": "FLOAT",
+     "widget": {
+      "name": "fps"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "label_before",
+     "name": "label_before",
+     "shape": 7,
+     "type": "STRING",
+     "widget": {
+      "name": "label_before"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "label_after",
+     "name": "label_after",
+     "shape": 7,
+     "type": "STRING",
+     "widget": {
+      "name": "label_after"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "direction",
+     "name": "direction",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "direction"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "format",
+     "name": "format",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "format"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "jpeg_quality",
+     "name": "jpeg_quality",
+     "shape": 7,
+     "type": "INT",
+     "widget": {
+      "name": "jpeg_quality"
+     },
+     "link": null
+    },
+    {
+     "localized_name": "max_frames",
+     "name": "max_frames",
+     "shape": 7,
+     "type": "INT",
+     "widget": {
+      "name": "max_frames"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "report",
+     "name": "report",
+     "type": "STRING",
+     "links": null
+    }
+   ],
+   "properties": {
+    "aux_id": "ComfyUI-AXIRIS-DLSS5",
+    "ver": "e35fcbe15b06574db6c024b13565513fc9723082",
+    "Node name for S&R": "AXBeforeAfter"
+   },
+   "widgets_values": [
+    24,
+    "SOURCE",
+    "THE VARIANT YOU CLICK",
+    "vertical",
+    "jpeg",
+    92,
+    600,
+    ""
+   ],
+   "widgets_values_named": {
+    "fps": 24,
+    "label_before": "SOURCE",
+    "label_after": "THE VARIANT YOU CLICK",
+    "direction": "vertical",
+    "format": "jpeg",
+    "jpeg_quality": 92,
+    "max_frames": 600,
+    "axba_view": ""
+   }
+  },
+  {
+   "id": 7,
+   "type": "PreviewAny",
+   "pos": [
+    40,
+    700
+   ],
+   "size": [
+    320,
+    300
+   ],
+   "flags": {},
+   "order": 6,
+   "mode": 0,
+   "inputs": [
+    {
+     "localized_name": "source",
+     "name": "source",
+     "type": "*",
+     "link": 4
+    }
+   ],
+   "outputs": [
+    {
+     "localized_name": "CHAÎNE",
+     "name": "STRING",
+     "type": "STRING",
+     "links": null
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.34.2",
+    "Node name for S&R": "PreviewAny"
+   },
+   "widgets_values": [],
+   "widgets_values_named": {}
+  }
+ ],
+ "links": [
+  [
+   1,
+   2,
+   0,
+   3,
+   0,
+   "IMAGE"
+  ],
+  [
+   2,
+   3,
+   0,
+   4,
+   0,
+   "IMAGE"
+  ],
+  [
+   3,
+   3,
+   1,
+   5,
+   0,
+   "IMAGE"
+  ],
+  [
+   4,
+   3,
+   2,
+   7,
+   0,
+   "STRING"
+  ],
+  [
+   5,
+   2,
+   0,
+   6,
+   0,
+   "IMAGE"
+  ],
+  [
+   6,
+   3,
+   1,
+   6,
+   1,
+   "IMAGE"
+  ]
+ ],
+ "groups": [],
+ "config": {},
+ "extra": {
+  "ds": {
+   "scale": 0.38770011737552745,
+   "offset": [
+    1243.3988485209447,
+    338.33333333333326
+   ]
+  }
+ },
+ "version": 0.4
+}

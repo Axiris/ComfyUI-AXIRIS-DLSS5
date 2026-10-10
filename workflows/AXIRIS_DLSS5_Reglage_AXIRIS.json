@@ -1,0 +1,438 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "revision": 0,
+  "last_node_id": 6,
+  "last_link_id": 5,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "Note",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        900,
+        470
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "AXIRIS look - DLSS 5 Neural Rendering (Merserk v9 engine, MIT)\n\nOne pass. Every slider is editable here: this workflow is made to be tuned by hand.\n\nTWO SETTINGS DESERVE ATTENTION, because their neutral-looking default does nothing:\n  . skin_structure = -1 does NOT mean \"minimum\". It means \"left to the engine\", and the\n    engine tends to overwork skin. Drive it instead (0 = no skin work, 2 = strong).\n  . tone_preservation keeps the SOURCE brightness. At 0 the render darkens; raise it until\n    the brightness comes back. It is a counterweight: too high and the effect fades.\n  . face_protection holds back the same work on faces.\n\nHOW TO JUDGE A SETTING: change ONE slider at a time, and read it twice - against the previous\nrender (what this slider changes) and against the source (whether the effect is still there).\n\nFOR DETAIL: upscale FIRST (it adds matter), then run DLSS 5."
+      ],
+      "widgets_values_named": {
+        "text": "AXIRIS look - DLSS 5 Neural Rendering (Merserk v9 engine, MIT)\n\nOne pass. Every slider is editable here: this workflow is made to be tuned by hand.\n\nTWO SETTINGS DESERVE ATTENTION, because their neutral-looking default does nothing:\n  . skin_structure = -1 does NOT mean \"minimum\". It means \"left to the engine\", and the\n    engine tends to overwork skin. Drive it instead (0 = no skin work, 2 = strong).\n  . tone_preservation keeps the SOURCE brightness. At 0 the render darkens; raise it until\n    the brightness comes back. It is a counterweight: too high and the effect fades.\n  . face_protection holds back the same work on faces.\n\nHOW TO JUDGE A SETTING: change ONE slider at a time, and read it twice - against the previous\nrender (what this slider changes) and against the source (whether the effect is still there).\n\nFOR DETAIL: upscale FIRST (it adds matter), then run DLSS 5."
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 2,
+      "type": "LoadImage",
+      "pos": [
+        40,
+        550
+      ],
+      "size": [
+        320,
+        330
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "image",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "choisissez le fichier à télécharger",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1
+          ]
+        },
+        {
+          "localized_name": "MASQUE",
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.2",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "axiris_dlss5_portrait.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "axiris_dlss5_portrait.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 3,
+      "type": "AXDLSS5Render",
+      "pos": [
+        400,
+        550
+      ],
+      "size": [
+        380,
+        520
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "localized_name": "mask",
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "localized_name": "passes",
+          "name": "passes",
+          "type": "INT",
+          "widget": {
+            "name": "passes"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "style",
+          "name": "style",
+          "type": "COMBO",
+          "widget": {
+            "name": "style"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "intensity",
+          "name": "intensity",
+          "type": "FLOAT",
+          "widget": {
+            "name": "intensity"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "local_tone",
+          "name": "local_tone",
+          "type": "FLOAT",
+          "widget": {
+            "name": "local_tone"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "local_structure",
+          "name": "local_structure",
+          "type": "FLOAT",
+          "widget": {
+            "name": "local_structure"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "skin_structure",
+          "name": "skin_structure",
+          "type": "FLOAT",
+          "widget": {
+            "name": "skin_structure"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "auto_mask",
+          "name": "auto_mask",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "auto_mask"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "color_strength",
+          "name": "color_strength",
+          "type": "FLOAT",
+          "widget": {
+            "name": "color_strength"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "tone_preservation",
+          "name": "tone_preservation",
+          "type": "FLOAT",
+          "widget": {
+            "name": "tone_preservation"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "face_protection",
+          "name": "face_protection",
+          "type": "FLOAT",
+          "widget": {
+            "name": "face_protection"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "grain",
+          "name": "grain",
+          "type": "FLOAT",
+          "widget": {
+            "name": "grain"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "scale",
+          "name": "scale",
+          "type": "COMBO",
+          "widget": {
+            "name": "scale"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "mask_feather",
+          "name": "mask_feather",
+          "shape": 7,
+          "type": "INT",
+          "widget": {
+            "name": "mask_feather"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "preset",
+          "name": "preset",
+          "shape": 7,
+          "type": "COMBO",
+          "widget": {
+            "name": "preset"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            2
+          ]
+        },
+        {
+          "localized_name": "report",
+          "name": "report",
+          "type": "STRING",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "ComfyUI-AXIRIS-DLSS5",
+        "ver": "ac50f6f067d2a05248b48b4be7db733a5a0d5dea",
+        "Node name for S&R": "AXDLSS5Render"
+      },
+      "widgets_values": [
+        1,
+        "Default",
+        0.85,
+        0.595,
+        1,
+        0.6,
+        true,
+        1,
+        0.6,
+        0.5,
+        0,
+        "source (100 %)",
+        8,
+        "custom (sliders)"
+      ],
+      "widgets_values_named": {
+        "passes": 1,
+        "style": "Default",
+        "intensity": 0.85,
+        "local_tone": 0.595,
+        "local_structure": 1,
+        "skin_structure": -1,
+        "auto_mask": true,
+        "color_strength": 1,
+        "tone_preservation": 0,
+        "face_protection": 0,
+        "grain": 0,
+        "scale": "source (100 %)",
+        "mask_feather": 8,
+        "preset": "custom (sliders)"
+      }
+    },
+    {
+      "id": 4,
+      "type": "SaveImage",
+      "pos": [
+        820,
+        550
+      ],
+      "size": [
+        380,
+        400
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 2
+        },
+        {
+          "localized_name": "préfixe_du_nom_de_fichier",
+          "name": "filename_prefix",
+          "type": "STRING",
+          "widget": {
+            "name": "filename_prefix"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.2",
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "AXIRIS_DLSS5/reglage_axiris"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "AXIRIS_DLSS5/manual"
+      }
+    },
+    {
+      "id": 6,
+      "type": "PreviewAny",
+      "pos": [
+        400,
+        1110
+      ],
+      "size": [
+        380,
+        200
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "source",
+          "name": "source",
+          "type": "*",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "CHAÎNE",
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.34.2",
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      3,
+      0,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      5,
+      3,
+      1,
+      6,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.38770011737552745,
+      "offset": [
+        1243.3988485209447,
+        338.33333333333326
+      ]
+    }
+  },
+  "version": 0.4
+}
