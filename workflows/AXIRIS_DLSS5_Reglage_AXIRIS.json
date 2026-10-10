@@ -22,10 +22,10 @@
       "outputs": [],
       "properties": {},
       "widgets_values": [
-        "AXIRIS look - DLSS 5 Neural Rendering (Merserk v9 engine, MIT)\n\nOne pass. Every slider is editable here: this workflow is made to be tuned by hand.\n\nTWO SETTINGS DESERVE ATTENTION, because their neutral-looking default does nothing:\n  . skin_structure = -1 does NOT mean \"minimum\". It means \"left to the engine\", and the\n    engine tends to overwork skin. Drive it instead (0 = no skin work, 2 = strong).\n  . tone_preservation keeps the SOURCE brightness. At 0 the render darkens; raise it until\n    the brightness comes back. It is a counterweight: too high and the effect fades.\n  . face_protection holds back the same work on faces.\n\nHOW TO JUDGE A SETTING: change ONE slider at a time, and read it twice - against the previous\nrender (what this slider changes) and against the source (whether the effect is still there).\n\nFOR DETAIL: upscale FIRST (it adds matter), then run DLSS 5."
+        "AXIRIS look - DLSS 5 Neural Rendering (Merserk Visual Enhancer v15)\n\nOne pass. Every slider is editable here: this workflow is made to be tuned by hand.\n\nThe controls are DLSS's own: style (0, 1, 2), intensity (0-2), local tone, local structure and skin\nstructure (0-1), the model's automatic mask. To protect or push one area, plug a mask (white = full,\nblack = protected) - or a colour control mask: red = intensity, green = local tone, blue = structure.\n\nHOW TO JUDGE A SETTING: change ONE slider at a time, and read it twice - against the previous\nrender (what this slider changes) and against the source (whether the effect is still there).\n\nFOR DETAIL: upscale FIRST (it adds matter), then run DLSS 5."
       ],
       "widgets_values_named": {
-        "text": "AXIRIS look - DLSS 5 Neural Rendering (Merserk v9 engine, MIT)\n\nOne pass. Every slider is editable here: this workflow is made to be tuned by hand.\n\nTWO SETTINGS DESERVE ATTENTION, because their neutral-looking default does nothing:\n  . skin_structure = -1 does NOT mean \"minimum\". It means \"left to the engine\", and the\n    engine tends to overwork skin. Drive it instead (0 = no skin work, 2 = strong).\n  . tone_preservation keeps the SOURCE brightness. At 0 the render darkens; raise it until\n    the brightness comes back. It is a counterweight: too high and the effect fades.\n  . face_protection holds back the same work on faces.\n\nHOW TO JUDGE A SETTING: change ONE slider at a time, and read it twice - against the previous\nrender (what this slider changes) and against the source (whether the effect is still there).\n\nFOR DETAIL: upscale FIRST (it adds matter), then run DLSS 5."
+        "text": "AXIRIS look - DLSS 5 Neural Rendering (Merserk Visual Enhancer v15)\n\nOne pass. Every slider is editable here: this workflow is made to be tuned by hand.\n\nThe controls are DLSS's own: style (0, 1, 2), intensity (0-2), local tone, local structure and skin\nstructure (0-1), the model's automatic mask. To protect or push one area, plug a mask (white = full,\nblack = protected) - or a colour control mask: red = intensity, green = local tone, blue = structure.\n\nHOW TO JUDGE A SETTING: change ONE slider at a time, and read it twice - against the previous\nrender (what this slider changes) and against the source (whether the effect is still there).\n\nFOR DETAIL: upscale FIRST (it adds matter), then run DLSS 5."
       },
       "color": "#432",
       "bgcolor": "#653"
@@ -123,6 +123,12 @@
           "link": null
         },
         {
+          "name": "control_mask",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        },
+        {
           "localized_name": "passes",
           "name": "passes",
           "type": "INT",
@@ -186,57 +192,11 @@
           "link": null
         },
         {
-          "localized_name": "color_strength",
-          "name": "color_strength",
-          "type": "FLOAT",
-          "widget": {
-            "name": "color_strength"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "tone_preservation",
-          "name": "tone_preservation",
-          "type": "FLOAT",
-          "widget": {
-            "name": "tone_preservation"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "face_protection",
-          "name": "face_protection",
-          "type": "FLOAT",
-          "widget": {
-            "name": "face_protection"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "grain",
-          "name": "grain",
-          "type": "FLOAT",
-          "widget": {
-            "name": "grain"
-          },
-          "link": null
-        },
-        {
           "localized_name": "scale",
           "name": "scale",
           "type": "COMBO",
           "widget": {
             "name": "scale"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "mask_feather",
-          "name": "mask_feather",
-          "shape": 7,
-          "type": "INT",
-          "widget": {
-            "name": "mask_feather"
           },
           "link": null
         },
@@ -276,34 +236,24 @@
       },
       "widgets_values": [
         1,
-        "Default",
+        "Style 0",
         0.85,
         0.595,
-        1,
+        1.0,
         0.6,
         true,
-        1,
-        0.6,
-        0.5,
-        0,
         "source (100 %)",
-        8,
         "custom (sliders)"
       ],
       "widgets_values_named": {
         "passes": 1,
-        "style": "Default",
+        "style": "Style 0",
         "intensity": 0.85,
         "local_tone": 0.595,
-        "local_structure": 1,
-        "skin_structure": -1,
+        "local_structure": 1.0,
+        "skin_structure": 0.6,
         "auto_mask": true,
-        "color_strength": 1,
-        "tone_preservation": 0,
-        "face_protection": 0,
-        "grain": 0,
         "scale": "source (100 %)",
-        "mask_feather": 8,
         "preset": "custom (sliders)"
       }
     },

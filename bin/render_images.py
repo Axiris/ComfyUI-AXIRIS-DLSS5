@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Pilot for Merserk v9's IMAGE pipeline (src/neural_rendering/image/batch.convert_images), called as is.
+"""Pilot for Merserk's Visual Enhancer IMAGE pipeline (src/neural_rendering/image/batch.convert_images), called as is.
 
 Run by the ComfyUI nodes with Merserk's embedded Python:
   <merserk>/bin/python-*-embed-amd64/python.exe render_images.py <request.json> <merserk dir>

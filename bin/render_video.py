@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Pilot for Merserk v9's VIDEO pipeline (src/neural_rendering/video/processor.convert_video), called as is.
+"""Pilot for Merserk's Visual Enhancer VIDEO pipeline (src/neural_rendering/video/processor.convert_video), called as is.
 
 The video pipeline keeps a temporal history, detects scene cuts, has a shimmer suppression and computes the
 motion itself. Run with Merserk's embedded Python:
